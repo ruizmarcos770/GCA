@@ -1,0 +1,14 @@
+txtUser-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.comercialgca.eu/sitemap.xml
+
+# Disallow admin areas (si existen)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important files
+Allow: /images/
+Allow: /css/
+Allow: /js/
