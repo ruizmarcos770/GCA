@@ -328,3 +328,58 @@ document.addEventListener('visibilitychange', function() {
         console.log('Page visible');
     }
 });
+// NUEVAS FUNCIONALIDADES - AGREGAR AL FINAL
+// ========================================
+
+// Back to Top functionality
+function initBackToTop() {
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
+// Mejorar el loading del formulario
+function enhanceContactForm() {
+    const submitBtn = document.querySelector('#contactForm button[type="submit"]');
+    
+    // Sobrescribir la función showLoadingState existente
+    window.showLoadingState = function() {
+        const originalText = submitBtn.textContent;
+        submitBtn.innerHTML = '<span class="loading-spinner"></span>Enviando...';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('loading');
+        submitBtn.dataset.originalText = originalText;
+    };
+}
+
+// MODIFICAR la función DOMContentLoaded existente
+// ENCONTRAR esta línea en tu script.js:
+// document.addEventListener('DOMContentLoaded', function() {
+
+// Y AGREGAR estas dos líneas después de las funciones existentes:
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all functionality
+    initNavigation();
+    initScrollEffects();
+    initContactForm();
+    initSmoothScrolling();
+    initAnimations();
+    
+    // AGREGAR ESTAS LÍNEAS:
+    initBackToTop();
+    enhanceContactForm();
